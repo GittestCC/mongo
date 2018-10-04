@@ -1,0 +1,36 @@
+{
+  "name": "todolist",
+  "version": "0.1.4",
+  "description": "Todolist microservice",
+  "main": "app/index.js",
+  "repository": "github:kintohub/todolist",
+  "scripts": {
+    "dev:debug": "babel-node app/index.js --inspect",
+    "dev": "babel-node app/index.js",
+    "start": "nodemon --exec npm run dev",
+    "debug": "nodemon --exec npm run dev:debug",
+    "build:clean": "rm -rf dist && mkdir dist",
+    "build:server": "babel -d ./dist ./app",
+    "prod:build": "npm run build:clean && npm run build:server",
+    "prod:server": "PORT=80 node dist/index.js",
+    "prod": "npm run prod:build && npm run prod:server",
+    "apidoc": "kinto apidoc -l -e /node_modules"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^5.0.0",
+    "hapi": "^17.2.0",
+    "mongoose": "^5.2.6",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "kinto-cli": "^0.2.6",
+    "nodemon": "^1.18.3"
+  }
+}
